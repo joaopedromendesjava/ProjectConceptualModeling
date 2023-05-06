@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Categories implements Serializable {
+public class Category implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -18,11 +18,14 @@ public class Categories implements Serializable {
 	
 	private String name;
 	
+	public Category() {
+		
+	}
 
-	public Categories(Long id, String nome) {
+	public Category(Long id, String name) {
 		super();
 		this.id = id;
-		this.name = nome;
+		this.name = name;
 	}
 	
 	public void setId(Long id) {
@@ -37,11 +40,10 @@ public class Categories implements Serializable {
 		return name;
 	}
 	
-	public void setNome(String nome) {
-		this.name = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 
-	
 	
 	@Override
 	public int hashCode() {
@@ -59,7 +61,7 @@ public class Categories implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categories other = (Categories) obj;
+		Category other = (Category) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -67,5 +69,4 @@ public class Categories implements Serializable {
 			return false;
 		return true;
 	}
-	
 }
