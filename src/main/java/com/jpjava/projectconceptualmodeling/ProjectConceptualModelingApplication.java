@@ -9,9 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.jpjava.projectconceptualmodeling.model.Category;
+import com.jpjava.projectconceptualmodeling.model.City;
 import com.jpjava.projectconceptualmodeling.model.Product;
+import com.jpjava.projectconceptualmodeling.model.State;
 import com.jpjava.projectconceptualmodeling.repository.CategoryRepository;
+import com.jpjava.projectconceptualmodeling.repository.CityRepository;
 import com.jpjava.projectconceptualmodeling.repository.ProductRepository;
+import com.jpjava.projectconceptualmodeling.repository.StateRepository;
 
 @EnableJpaRepositories(basePackages = {"com.jpjava.projectconceptualmodeling.repository"})
 @SpringBootApplication
@@ -22,6 +26,12 @@ public class ProjectConceptualModelingApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private StateRepository stateRepository;
+	
+	@Autowired
+	private CityRepository cityRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectConceptualModelingApplication.class, args);
@@ -48,6 +58,22 @@ public class ProjectConceptualModelingApplication implements CommandLineRunner {
 //		categoryRepository.saveAll(Arrays.asList(cat1, cat2));
 //		productRepository.saveAll(Arrays.asList(p1, p2, p3));
 //		
+		
+		State st1 = new State(null, "Minas Gerais");
+		State st2 = new State(null, "Rio de Janeiro");
+		
+		City c1 = new City(null, "Belo Horizonte", st1);
+		City c2 = new City(null, "Uberlândia", st1);
+
+		City c3 = new City(null, "Cabo Frio", st2);
+		City c4 = new City(null, "Copa Cabana", st2);
+		
+		st1.getCities().addAll(Arrays.asList(c1, c2));
+		st1.getCities().addAll(Arrays.asList(c3,c4));
+		
+		stateRepository.saveAll(Arrays.asList(st1, st2));
+		cityRepository.saveAll(Arrays.asList(c1,c2,c3,c4));
+		
 	}
 
 }
