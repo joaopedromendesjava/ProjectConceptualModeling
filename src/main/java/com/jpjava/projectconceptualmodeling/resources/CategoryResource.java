@@ -1,7 +1,5 @@
 package com.jpjava.projectconceptualmodeling.resources;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +20,7 @@ public class CategoryResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> find(@PathVariable Long id) {
 		
-		Optional<Category> cat = categoryService.find(id);
+		Category cat = categoryService.find(id);
 
 		return ResponseEntity.ok(cat);
 	}
