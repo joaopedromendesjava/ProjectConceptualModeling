@@ -13,6 +13,7 @@ import com.jpjava.projectconceptualmodeling.model.Address;
 import com.jpjava.projectconceptualmodeling.model.Category;
 import com.jpjava.projectconceptualmodeling.model.City;
 import com.jpjava.projectconceptualmodeling.model.Client;
+import com.jpjava.projectconceptualmodeling.model.OrderItem;
 import com.jpjava.projectconceptualmodeling.model.OrderPay;
 import com.jpjava.projectconceptualmodeling.model.Payment;
 import com.jpjava.projectconceptualmodeling.model.PaymentBankSplip;
@@ -25,6 +26,7 @@ import com.jpjava.projectconceptualmodeling.repository.AddressRepository;
 import com.jpjava.projectconceptualmodeling.repository.CategoryRepository;
 import com.jpjava.projectconceptualmodeling.repository.CityRepository;
 import com.jpjava.projectconceptualmodeling.repository.ClientRepository;
+import com.jpjava.projectconceptualmodeling.repository.OrderItemRepository;
 import com.jpjava.projectconceptualmodeling.repository.OrderRepository;
 import com.jpjava.projectconceptualmodeling.repository.PaymentRepository;
 import com.jpjava.projectconceptualmodeling.repository.ProductRepository;
@@ -57,6 +59,9 @@ public class ProjectConceptualModelingApplication implements CommandLineRunner {
 	
 	@Autowired
 	private PaymentRepository paymentRepository; 
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectConceptualModelingApplication.class, args);
@@ -127,6 +132,18 @@ public class ProjectConceptualModelingApplication implements CommandLineRunner {
 		orderRepository.saveAll(Arrays.asList(o1, o2));
 		paymentRepository.saveAll(Arrays.asList(pay1, pay2));
 		
+		OrderItem oi1 = new OrderItem(o1, p1, 0.00,1, 2000.00);
+		OrderItem oi2 = new OrderItem(o1, p3, 0.00, 2, 80.00);
+		OrderItem oi3 = new OrderItem(o2, p2, 100.00, 1 , 800.00);
+		
+		o1.getItems().addAll(Arrays.asList(oi1, oi2));
+		o2.getItems().addAll(Arrays.asList(oi3));
+		
+		p1.getItens().addAll(Arrays.asList(oi1));
+		p2.getItens().addAll(Arrays.asList(oi3));
+		p3.getItens().addAll(Arrays.asList(oi2));
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3));
 	}
 }
 
