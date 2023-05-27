@@ -29,7 +29,7 @@ public enum CustomerType {
 			return null;
 		}
 		for (CustomerType x : CustomerType.values()) {
-			if(code.equals(x.getCode())) {
+			if(code.equals(x.getCode())){
 				return x;
 			}
 		}

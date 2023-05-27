@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jpjava.projectconceptualmodeling.model.Category;
-import com.jpjava.projectconceptualmodeling.service.CategoryService;
+import com.jpjava.projectconceptualmodeling.model.Client;
+import com.jpjava.projectconceptualmodeling.service.ClientService;
 
 @RestController
-@RequestMapping(value = "/category")
-public class CategoryResource {
+@RequestMapping(value = "/client")
+public class ClientResource {
 	
 	@Autowired
-	private CategoryService categoryService;
+	private ClientService clientService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> find(@PathVariable Long id) {
+	public ResponseEntity<?> find(@PathVariable Long id){
+	
+		Client client = clientService.findClient(id);
 		
-		Category cat = categoryService.findCategory(id);
-
-		return ResponseEntity.ok(cat);
+		return ResponseEntity.ok(client);
 	}
-}
 
+}

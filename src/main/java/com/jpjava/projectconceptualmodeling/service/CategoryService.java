@@ -13,7 +13,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	public Category find(Long id) {
+	public Category findCategory(Long id) {
 		
 		 Category category = categoryRepository.findByCategoryId(id);
 		 
