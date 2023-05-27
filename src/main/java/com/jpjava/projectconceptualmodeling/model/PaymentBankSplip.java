@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.jpjava.projectconceptualmodeling.model.enums.StatusPayment;
 
 @Entity
@@ -11,7 +12,10 @@ public class PaymentBankSplip extends Payment {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date paymentDate;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private Date dueDate;
 	
 	
