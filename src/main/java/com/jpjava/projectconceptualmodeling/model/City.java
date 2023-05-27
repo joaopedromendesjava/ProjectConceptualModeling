@@ -23,7 +23,7 @@ public class City implements Serializable{
 	
 	@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "estado_id")
+	@JoinColumn(name = "state_id")
 	private State state;
 
 	

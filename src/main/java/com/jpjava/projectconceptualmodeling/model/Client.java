@@ -38,7 +38,8 @@ public class Client implements Serializable{
 	@CollectionTable(name = "telephone")
 	private Set<String> telephones = new HashSet<>(); //Conjunto de strings, nao se repete em set
 	
-	
+	@OneToMany(mappedBy = "client")
+	private List<OrderPay> orders = new ArrayList<>();
 	
 	public Client() {
 	}
@@ -106,6 +107,14 @@ public class Client implements Serializable{
 
 	public void setTelephones(Set<String> telephones) {
 		this.telephones = telephones;
+	}
+	
+	public List<OrderPay> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<OrderPay> orders) {
+		this.orders = orders;
 	}
 
 	@Override
