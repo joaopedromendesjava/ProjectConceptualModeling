@@ -23,7 +23,6 @@ public class PaymentBankSplip extends Payment {
 
 	}
 
-
 	public PaymentBankSplip(Integer id, StatusPayment status, OrderPay order, Date paymentDate, Date dueDate ) {
 		
 		super(id, status, order);

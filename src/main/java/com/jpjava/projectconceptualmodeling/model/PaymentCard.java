@@ -11,11 +11,9 @@ public class PaymentCard extends Payment {
 	
 	private int numberInstallments;
 
-
 	public PaymentCard() {
 
 	}
-
 
 	public PaymentCard(Integer id, StatusPayment status, OrderPay order, int numberInstallments) {
 		super(id, status, order);
@@ -24,11 +22,9 @@ public class PaymentCard extends Payment {
 		
 	}
 
-
 	public int getNumberInstallments() {
 		return numberInstallments;
 	}
-
 
 	public void setNumberInstallments(int numberInstallments) {
 		this.numberInstallments = numberInstallments;
